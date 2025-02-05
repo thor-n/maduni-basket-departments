@@ -1,21 +1,27 @@
 import axios from 'axios'
 import type { Department } from '~/types/Department'
-import { useRuntimeConfig } from '#imports'
 
 interface ApiResponse {
   data: Department[];
 }
 
 export const fetchDepartments = async (): Promise<Department[]> => {
-  const { public: { apiBase, apiKey } } = useRuntimeConfig()
+  // Use environment-aware API base
+  const apiBase = process.env.NODE_ENV === 'production' 
+    ? '/api/v3' 
+    : 'https://cphapp.rema1000.dk/api/v3'
   
+  const apiKey = 'N6a8Vzkb9SrPGxw5WDDv7yGYGceakC9Y'
+
   try {
     const response = await axios.get<ApiResponse>(`${apiBase}/departments`, {
       headers: {
-        'X-API-KEY': apiKey
+        'X-API-KEY': apiKey,
+        // Add CORS headers
+        'Access-Control-Allow-Origin': '*'
       }
     })
-    return response.data.data  // Note the .data to extract the array
+    return response.data.data
   } catch (error) {
     console.error('Error fetching departments:', error)
     
@@ -24,7 +30,8 @@ export const fetchDepartments = async (): Promise<Department[]> => {
       try {
         const fallbackResponse = await axios.get<ApiResponse>('https://cphapp.rema1000.dk/api/v3/departments', {
           headers: {
-            'X-API-KEY': apiKey
+            'X-API-KEY': apiKey,
+            'Access-Control-Allow-Origin': '*'
           }
         })
         return fallbackResponse.data.data

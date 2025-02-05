@@ -4,8 +4,11 @@ export default defineNuxtConfig({
   routeRules: {
     // Pre-render all pages statically
     '/**': { prerender: true },
-    // Optionally, specify specific routes for client-side rendering
-    // '/dynamic-page': { ssr: false }
+    // Proxy API routes
+    '/api/v3/**': { 
+      proxy: 'https://cphapp.rema1000.dk/api/v3/**',
+      cors: true 
+    }
   },
   ssr: false,
   // Add Tailwind module
@@ -47,11 +50,20 @@ export default defineNuxtConfig({
 
   // Nitro configuration for API proxy and CORS
   nitro: {
+    // Explicitly set up API proxy
     routeRules: {
       '/api/v3/**': { 
         proxy: 'https://cphapp.rema1000.dk/api/v3/**',
         cors: true
       }
+    },
+    // Add a fallback for static generation
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/departments'
+      ]
     }
   },
 
