@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+.nuxt
+.output
+dist
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
