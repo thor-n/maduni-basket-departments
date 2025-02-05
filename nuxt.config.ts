@@ -2,7 +2,7 @@ export default defineNuxtConfig({
 
   // Add this for GitHub Pages deployment
   app: {
-    baseURL: '/rema1000-departments/', // Replace with your repo name
+    baseURL: '/maduni-basket-departments/', // Replace with your repo name
   },
   
   // Other existing configurations...
