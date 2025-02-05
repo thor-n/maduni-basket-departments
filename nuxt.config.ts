@@ -1,19 +1,4 @@
 export default defineNuxtConfig({
-
-  // Add this for GitHub Pages deployment
-  app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/maduni-basket-departments/'
-  },
-  
-  
-  // Other existing configurations...
-  ssr: false, // Important for static site generation
-  
-  // Ensure static generation
-  nitro: {
-    preset: 'github-pages'
-  },
-
   devtools: { enabled: true },
 
   // Add Tailwind module
@@ -50,7 +35,6 @@ export default defineNuxtConfig({
 
   // Nitro configuration for API proxy
   nitro: {
-    preset: 'github-pages',
     routeRules: {
       '/api/v3/**': { 
         proxy: 'https://cphapp.rema1000.dk/api/v3/**',
