@@ -1,6 +1,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  routeRules: {
+    // Pre-render all pages statically
+    '/**': { prerender: true },
+    // Optionally, specify specific routes for client-side rendering
+    // '/dynamic-page': { ssr: false }
+  },
+  ssr: false,
   // Add Tailwind module
   modules: [
     '@nuxtjs/tailwindcss'
