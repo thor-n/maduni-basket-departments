@@ -49,6 +49,7 @@ export default defineNuxtConfig({
 
   // Nitro configuration for API proxy
   nitro: {
+    preset: 'github-pages',
     routeRules: {
       '/api/v3/**': { 
         proxy: 'https://cphapp.rema1000.dk/api/v3/**',

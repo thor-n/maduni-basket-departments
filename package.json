@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "npx serve .output/public"
   },
   "dependencies": {
     "axios": "^1.7.9",
