@@ -20,11 +20,11 @@ jobs:
       # Install dependencies
       - run: npm install
       
-      # Build with custom base URL
+      # Build with dynamic base URL from repository slug
       - name: Build Nuxt site
         env:
-          NUXT_APP_BASE_URL: /maduni-basket-departments/
-        run: npx nuxt build --preset github_pages
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+        run: npx nuxt generate
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

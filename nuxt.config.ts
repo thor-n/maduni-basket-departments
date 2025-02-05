@@ -26,6 +26,10 @@ export default defineNuxtConfig({
     },
   },
 
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+  },
+
   runtimeConfig: {
     public: {
       apiBase: 'https://cphapp.rema1000.dk/api/v3',
