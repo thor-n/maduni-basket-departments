@@ -2,8 +2,9 @@ export default defineNuxtConfig({
 
   // Add this for GitHub Pages deployment
   app: {
-    baseURL: '/maduni-basket-departments/', // Replace with your repo name
+    baseURL: process.env.NUXT_APP_BASE_URL || '/maduni-basket-departments/'
   },
+  
   
   // Other existing configurations...
   ssr: false, // Important for static site generation
