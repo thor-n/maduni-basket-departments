@@ -39,12 +39,13 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      // Full external URL as fallback
       apiBase: 'https://cphapp.rema1000.dk/api/v3',
       apiKey: 'N6a8Vzkb9SrPGxw5WDDv7yGYGceakC9Y'
     }
   },
 
-  // Nitro configuration for API proxy
+  // Nitro configuration for API proxy and CORS
   nitro: {
     routeRules: {
       '/api/v3/**': { 
